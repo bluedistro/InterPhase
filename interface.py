@@ -1,9 +1,3 @@
-'''
-Code Author: Kingsley Biney
-Email: bineykingsley36@gmail.com
-'''
-
-
 from sys_info import sys_info
 import numpy as np
 from messaging import send_message
@@ -22,7 +16,9 @@ class system_care:
         self.__memory_flag = 0
 
     def greetings(self):
-        message = "How long did I sleep?, any way I'm awake now :)"
+	subject = "H!, I'm Caroline, your system health doctor."
+        message = "Your computer slept fine, any way It's up now and I will update you as soon as I spot any abnormally :)"
+	send_message(message=message, subject=subject)
         with open('logs.txt', 'w') as f:
             f.write('{}' + message + '\n'.format(str(datetime.datetime.now())))
             f.close()
