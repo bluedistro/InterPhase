@@ -58,7 +58,7 @@ class system_care:
         while True:
             # notify if battery percentage is less than 50% and not on charge
             battery_info = self.__sys_info.check_battery()
-            if not battery_info.get('power_plugged') and battery_info.get('percentage') < 100:
+            if not battery_info.get('power_plugged') and battery_info.get('percentage') < 30:
                 if self.__battery_flag == 0:
                     subject = "Laptop Battery Running Down"
                     message = "Current Battery Percentage is {}% and time remaining is {} seconds. "\
