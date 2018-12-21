@@ -3,6 +3,7 @@ Code Author: Kingsley Biney
 Email: bineykingsley36@gmail.com
 '''
 
+
 from sys_info import sys_info
 import numpy as np
 from messaging import send_message
@@ -57,11 +58,11 @@ class system_care:
         while True:
             # notify if battery percentage is less than 50% and not on charge
             battery_info = self.__sys_info.check_battery()
-            if not battery_info.get('power_plugged') and battery_info.get('percentage') < 30:
+            if not battery_info.get('power_plugged') and battery_info.get('percentage') < 100:
                 if self.__battery_flag == 0:
                     subject = "Laptop Battery Running Down"
-                    message = "Current Battery Percentage is {}%. "\
-                    "Please connect to a power supply".format(battery_info.get('percentage'))
+                    message = "Current Battery Percentage is {}% and time remaining is {} seconds. "\
+                    "Please connect to a power supply".format(battery_info.get('percentage'), battery_info.get('timeLeft'))
                     try:
                         send_message(subject=subject, message=message)
                         self.__battery_flag = 1
