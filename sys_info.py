@@ -1,3 +1,8 @@
+'''
+Code Author: Kingsley Biney
+Email: bineykingsley36@gmail.com
+'''
+
 import psutil
 
 class sys_info:

@@ -1,3 +1,8 @@
+'''
+Code Author: Kingsley Biney
+Email: bineykingsley36@gmail.com
+'''
+
 from sys_info import sys_info
 import numpy as np
 from messaging import send_message

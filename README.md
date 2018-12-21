@@ -1,4 +1,8 @@
-## Steps for setting up Script as a Service to enable autorun on Lunix Systems
+### Requirements
+* psutil
+* smtplib
+
+### Steps for setting up Script as a Service to enable autorun on Lunix Systems
 
 * After cloning this repo, open the script messaging.py and enter your email credentials to enable email notification
 
@@ -21,7 +25,7 @@
 
 * Change the permission on the service file to read only using the command: sudo chmod 664 /lib/systemd/system/interface.service
 
-## Configuring Systemd (Run the next lines)
+### Configuring Systemd (Run the next lines)
 
 * Run this command to reload daemon: sudo systemctl daemon-reload
 * Enable the service by running this command: sudo systemctl enable interface.service
@@ -30,8 +34,8 @@
 
 * Afterwards, check status of service using the command: sudo systemctl status interface.service
 
-## Note: When all is setup properly, the status should be active and running
+### Note: When all is setup properly, the status should be active and running
  
 
-### Author - Kingsley Biney
-### Email - bineykingsley36@gmail.com
+Author - Kingsley Biney
+Email - bineykingsley36@gmail.com
