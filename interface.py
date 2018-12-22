@@ -1,3 +1,7 @@
+'''
+Author: Kingsley Biney
+Email: bineykingsley36@gmail.com
+'''
 from sys_info import sys_info
 import numpy as np
 from messaging import send_message
@@ -26,32 +30,35 @@ class system_care:
     def interface(self):
         # greet when system starts
         self.greetings()
-        
-        # checkers
-        # get CPU temperature values
-        cpu_temperatures = self.__sys_info.check_temperature()
-        temp_list = list()
-        for cpu in cpu_temperatures:
-            temp_list.append(cpu.get('current_temp'))
-        average_temperature = np.average(temp_list)
-
-        # get CPU utilization values
-        cpu_util = self.__sys_info.check_cpu_util()
-        cpu_util = cpu_util.get('cpu_utilization')
-        temp_list = list()
-        for cpu in cpu_util:
-            temp_list.append(cpu.get('percentage'))
-        average_utilization = np.average(temp_list)
-
-        # get memory consumption data
-        memory = self.__sys_info.check_memory()
-        memory = memory.get('results')
-
-        # get disk consumption data
-        disk = self.__sys_info.check_disk()
-        disk = disk.get('results')
 
         while True:
+
+            # checkers
+            # get CPU temperature values
+            cpu_temperatures = self.__sys_info.check_temperature()
+            temp_list = list()
+            for cpu in cpu_temperatures:
+                temp_list.append(cpu.get('current_temp'))
+            # print(max(temp_list))
+            average_temperature = np.average(temp_list)
+            print(average_temperature)
+
+            # get CPU utilization values
+            cpu_util = self.__sys_info.check_cpu_util()
+            cpu_util = cpu_util.get('cpu_utilization')
+            temp_list = list()
+            for cpu in cpu_util:
+                temp_list.append(cpu.get('percentage'))
+            average_utilization = np.average(temp_list)
+
+            # get memory consumption data
+            memory = self.__sys_info.check_memory()
+            memory = memory.get('results')
+
+            # get disk consumption data
+            disk = self.__sys_info.check_disk()
+            disk = disk.get('results')
+
             # notify if battery percentage is less than 50% and not on charge
             battery_info = self.__sys_info.check_battery()
             if not battery_info.get('power_plugged') and battery_info.get('percentage') < 30:
@@ -89,10 +96,10 @@ class system_care:
                 battery_flag = 0
 
             # notify if average CPU temperature percentage > 85
-            if average_temperature > 85:
+            if average_temperature > 80:
                 if self.__temperature_flag == 0:
                     # send the individual temperature of all CPUs
-                    subject = "Average CPU temperature above {} Deg. Celc.".format(average_temperature)
+                    subject = "Edited: Average CPU temperature above {} Deg. Celc.".format(average_temperature)
                     message = ""
                     for cpu in cpu_temperatures:
                         message += "{} : {} Deg. Celc. ".format(cpu.get('label'), cpu.get('current_temp'))
